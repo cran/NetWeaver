@@ -2,6 +2,7 @@ rc.plot.histogram=function(Data, track.id, data.col=NULL, color.col=NULL, color.
 	rc.check.histogramData(Data)
 	rc.plot.track(track.id,border=track.border,col=track.color)
 	rcPar=rc.get.params()
+	if(is.null(data.col)) fixed.height=TRUE
 	mx=ifelse(fixed.height==TRUE && is.null(color.gradient),1,max(Data[,data.col],na.rm=TRUE))
 	if(is.null(custom.track.height)) custom.track.height=rcPar$track.height
 	for(i in 1:nrow(Data)){

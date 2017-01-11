@@ -1,10 +1,12 @@
 #plot histogram that across multiple chromosomes
-rc.plot.mHistogram=function(Data, track.id, data.col, color.col=NULL, color.gradient=NULL, fixed.height=FALSE, track.color=NA, track.border=NULL){
+rc.plot.mHistogram=function(Data, track.id, data.col=NULL, color.col=NULL, color.gradient=NULL, fixed.height=FALSE, track.color=NA, track.border=NULL, custom.track.height=NULL){
 	rc.check.mHistogramData(Data,data.col,color.col)
 	rc.plot.track(track.id,border=track.border,col=track.color)
 	rcPar=rc.get.params()
 	chromPar=rc.get.chrom()
-	mx=max(Data[,data.col])
+	if(is.null(data.col)) fixed.height=TRUE
+	mx=ifelse(fixed.height==TRUE && is.null(color.gradient),1,max(Data[,data.col],na.rm=TRUE))
+	if(is.null(custom.track.height)) custom.track.height=rcPar$track.height
 	for(i in 1:nrow(Data)){
 		Chr1=Data[i,'Chr1']
 		iChr1=chromPar[[Chr1]]
@@ -22,7 +24,7 @@ rc.plot.mHistogram=function(Data, track.id, data.col, color.col=NULL, color.grad
 			Col=rcPar$color.hist
 		}
 		if((! is.na(Col)) && Col=='white') Col=NA
-		thick=ifelse(fixed.height,rcPar$track.height,rcPar$track.height*Data[i,data.col]/mx)
+		thick=ifelse(fixed.height,custom.track.height,custom.track.height*Data[i,data.col]/mx)
 		pos.xy <- rc.get.ringCoordinates(track.id,Start=cumStart,End=cumEnd,ringThickness=thick)
 		polygon(pos.xy$x, pos.xy$y, col=Col, border=NA);
 	}

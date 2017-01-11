@@ -17,6 +17,5 @@ rc.initialize=function(cyto.info,num.tracks=NULL,chr.order=NULL,stepUnit=10^7,pa
 	rcEnvirInternal[["chromPar"]] <- cPar$chromPar
 	#stepSize, the size of move along the chromosomes when plotting
 	rcEnvirInternal[["baseUnits"]] <- list(halfPi=pi/2,unitDegree=2*pi/cPar$totalLen,totalChrLength=cPar$totalLen,stepSize=ceiling(cPar$totalLen/stepUnit))
-	cat('Parameters initialized\n')
 	return(invisible())
 }

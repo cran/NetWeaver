@@ -14,7 +14,7 @@
  \item{data.col}{integer, specifying the column that contains the data for plotting.}
  \item{color.col}{integer, specifying the column that contains the color.}
  \item{color.gradient}{a vector of gradient colors. See \code{details}.}
- \item{fixed.height}{logical, whether to fix the histogram height, resulting in heat-map if \code{TRUE}.}
+ \item{fixed.height}{logical, whether to fix the histogram height which results in heat-map. \code{TRUE} if \code{data.col} is \code{NULL}.}
  \item{track.color}{NA or color code for the track background.}
  \item{track.border}{the color to draw the track border. Use \code{NA} to omit borders.}
  \item{custom.track.height}{NULL or numeric, specifying customized track height. See \code{details}.}

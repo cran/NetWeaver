@@ -12,11 +12,11 @@
  \item{labels}{NULL or a vector of character string, specifying the text to be written.}
  \item{degree}{the angle of the arc rotation.}
  \item{col}{color for the text.}
- \item{custom.track.height}{NULL or numeric, specifying customized track height. See \code{details}.}
+ \item{custom.track.height}{NULL or numeric, specifying customized track height.}
  \item{...}{further graphical parameters (from par), such as srt and family.}
 }
 \details{
-If \code{labels} is NULL, \code{track.id} will be used.
+If \code{labels} is NULL, values of \code{track.id} will be used as text labels.
 }
 \author{
 Minghui Wang <m.h.wang@live.com>

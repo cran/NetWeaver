@@ -5,4 +5,5 @@ rc.plot.area<-function(size=1,oma=rep(0,4),mar=rep(0,4))
 	plot.new()
 	par(oma=oma,mar=mar)
 	plot.window(c(-rcPar$radius/size, rcPar$radius/size), c(-rcPar$radius/size, rcPar$radius/size),xaxs='i',yaxs='i')
+	return(invisible())
 }

@@ -12,7 +12,7 @@ Wang M, Roussos P, McKenzie A, Zhou X, Kajiwara Y, Brennand K, DeLuca GC, Crary 
 There are two sample pipelines available:
 \enumerate{
 \item
-Analysis of a real dataset of gene coexpression network modules can be reached through \code{\link{Modules}}.\cr
+Analysis of a real dataset of gene coexpression network modules can be reached through \code{vignette("netweaver")}.\cr
 \item
 Analysis of a hypothetical data is shown in sample code of \code{\link{rc.initialize}}.
 }

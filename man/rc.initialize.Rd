@@ -19,13 +19,11 @@
 where \code{Chr} is chromosome name, \code{Start} and \code{End} are the start and end positions on the chromosome, and \code{Stain} is the cyto stain.
 The stain is normally one of the "gneg", "acen", "stalk", "gvar", "gpos", "gpos100", "gpos75", "gpos66", "gpos50", "gpos33", and "gpos25", which will be plotted by color
 "white", "red", "steelblue", "lightgrey", "black", "black", "gray40", "gray50", "gray60", "gray70" and "gray80", accordingly. Customized colors for the cyto bands can be specified in
-an additional column named "\code{BandColor}".
-
-Additional plot settings can be specified through argument params, inculding: \code{color.line} (color for links, default "black"), \code{chr.padding} (padding between chromsomes is a fraction of the total chromosome sizes, default 0.1),
-\code{track.padding} (paddings between tracks is a fraction of the track height, default 0.1), \code{track.height} (track height, default 0.15), and \code{radius} (radius of the circos, default 1).
-
+an additional column named "\code{BandColor}".\cr\cr
+Additional plot settings can be specified through argument \code{params}, inculding: \code{color.line} (color for lines and links, default "black"), \code{chr.padding} (padding between chromsomes is a fraction of the total chromosome sizes, default 0.1),
+\code{track.padding} (paddings between tracks is a fraction of the track height, default 0.1), \code{track.height} (track height, default 0.15), and \code{radius} (radius of the circos, default 1).\cr\cr
+After initialization, the parameter settings can be retrived by \code{\link{rc.get.params}}.\cr\cr
 Noted that while \code{cyto.info} requires input to be in a form of chromosome cytobands, the input is not limited to genomic features. As illustrated in example data \code{\link{Modules}}, complex features of gene coexpression network modules can also be plotted with the current circos visualization technique.
-
 }
 \author{
 Minghui Wang <m.h.wang@live.com>
@@ -85,5 +83,10 @@ rc.plot.link(LinkData, track.num, data.col=4)
 ribbonData=data.frame(Chr1=c('C1','C3'), Start1=c(10,10), End1=c(40,40),
 	Chr2=c('C17','C10'), Start2=20, End2=60, Col=c('red','brown'))
 rc.plot.ribbon(ribbonData, track.num, color.col='Col', twist=TRUE)
+#label track id
 rc.plot.track.id(2:6, col=2)
+#add text label
+rc.plot.text(data.frame(Chr='C3',Pos=50,Label='GeneX'), track.id=3,srt=45,cex=0.8,col='blue')
+#add line mark
+rc.plot.line(data.frame(Chr='C19',Pos=seq(10,90,by=10),Col='red'), track.id=3, color.col=3)
 }
