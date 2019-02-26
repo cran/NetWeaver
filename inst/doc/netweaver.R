@@ -38,25 +38,25 @@ rc.reset.params(params)
 ## ----ch2, eval=FALSE-----------------------------------------------------
 #  chrom.alias=1:nrow(cyto)
 #  names(chrom.alias)=cyto$Chr
-#  rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+#  rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 
 ## ----fig1, ref.label=c("ch1","ch2"), fig.cap = "Figure 1. Ideogram", echo=FALSE----
 rc.plot.area(size=0.9)
 chrom.alias=1:nrow(cyto)
 names(chrom.alias)=cyto$Chr
-rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 
 ## ----chunk1, eval=FALSE--------------------------------------------------
 #  Rank=data.frame(cyto[,c("Chr","Start","End")], Score=Modules$Score, stringsAsFactors=FALSE)
-#  rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA)
+#  rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA, polygon.border=NA)
 
 ## ----fig2, ref.label=c("ch1","ch2","chunk1"), fig.cap = "Figure 2. Module ranking", echo=FALSE----
 rc.plot.area(size=0.9)
 chrom.alias=1:nrow(cyto)
 names(chrom.alias)=cyto$Chr
-rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 Rank=data.frame(cyto[,c("Chr","Start","End")], Score=Modules$Score, stringsAsFactors=FALSE)
-rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA)
+rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA, polygon.border=NA)
 
 ## ----chunk2, eval=FALSE--------------------------------------------------
 #  eigenCorCols=colnames(Modules)[grep("Rho",colnames(Modules))] #select columns with pattern Rho
@@ -74,22 +74,22 @@ rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom
 #  	HistData1=HistData[HistData$Data > 0,]
 #  	HistData1$col=colfuncBrown(nCol)[pmax(1,floor(HistData1[,data.col]*nCol/maxCorr))]
 #  	rc.plot.histogram(HistData1, track.num, data.col, color.col=color.col,
-#  		fixed.height=TRUE, track.color=track.color, track.border=track.border)
+#  		fixed.height=TRUE, track.color=track.color, track.border=track.border, polygon.border=NA)
 #  	#plot negative correlation
 #  	HistData2=HistData[HistData$Data <= 0,]
 #  	HistData2$Data=abs(HistData2$Data)
 #  	HistData2$col=colfuncBlue(nCol)[pmax(1,floor(HistData2[,data.col]*nCol/maxCorr))]
 #  	rc.plot.histogram(HistData2, track.num, data.col, color.col=color.col, fixed.height=TRUE,
-#  		track.border=track.border)
+#  		track.border=track.border, polygon.border=NA)
 #  }
 
 ## ----fig3, ref.label=c("ch1","ch2","chunk1","chunk2"), fig.cap = "Figure 3. Correlation coeffcients", echo=FALSE----
 rc.plot.area(size=0.9)
 chrom.alias=1:nrow(cyto)
 names(chrom.alias)=cyto$Chr
-rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 Rank=data.frame(cyto[,c("Chr","Start","End")], Score=Modules$Score, stringsAsFactors=FALSE)
-rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA)
+rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA, polygon.border=NA)
 eigenCorCols=colnames(Modules)[grep("Rho",colnames(Modules))] #select columns with pattern Rho
 maxCorr=1 #set maximum correlation coefficient
 track.border="#999999"
@@ -105,13 +105,13 @@ for(eigenCorCol in eigenCorCols){
 	HistData1=HistData[HistData$Data > 0,]
 	HistData1$col=colfuncBrown(nCol)[pmax(1,floor(HistData1[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData1, track.num, data.col, color.col=color.col,
-		fixed.height=TRUE, track.color=track.color, track.border=track.border)
+		fixed.height=TRUE, track.color=track.color, track.border=track.border, polygon.border=NA)
 	#plot negative correlation
 	HistData2=HistData[HistData$Data <= 0,]
 	HistData2$Data=abs(HistData2$Data)
 	HistData2$col=colfuncBlue(nCol)[pmax(1,floor(HistData2[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData2, track.num, data.col, color.col=color.col, fixed.height=TRUE,
-		track.border=track.border)
+		track.border=track.border, polygon.border=NA)
 }
 
 ## ----chunk3, eval=FALSE--------------------------------------------------
@@ -129,9 +129,9 @@ for(eigenCorCol in eigenCorCols){
 rc.plot.area(size=0.9)
 chrom.alias=1:nrow(cyto)
 names(chrom.alias)=cyto$Chr
-rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 Rank=data.frame(cyto[,c("Chr","Start","End")], Score=Modules$Score, stringsAsFactors=FALSE)
-rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA)
+rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA, polygon.border=NA)
 eigenCorCols=colnames(Modules)[grep("Rho",colnames(Modules))] #select columns with pattern Rho
 maxCorr=1 #set maximum correlation coefficient
 track.border="#999999"
@@ -147,13 +147,13 @@ for(eigenCorCol in eigenCorCols){
 	HistData1=HistData[HistData$Data > 0,]
 	HistData1$col=colfuncBrown(nCol)[pmax(1,floor(HistData1[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData1, track.num, data.col, color.col=color.col,
-		fixed.height=TRUE, track.color=track.color, track.border=track.border)
+		fixed.height=TRUE, track.color=track.color, track.border=track.border, polygon.border=NA)
 	#plot negative correlation
 	HistData2=HistData[HistData$Data <= 0,]
 	HistData2$Data=abs(HistData2$Data)
 	HistData2$col=colfuncBlue(nCol)[pmax(1,floor(HistData2[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData2, track.num, data.col, color.col=color.col, fixed.height=TRUE,
-		track.border=track.border)
+		track.border=track.border, polygon.border=NA)
 }
 y.cor=rc.get.coordinates(1,1,1)$y[1]-1
 x.cor=params$radius*0.8
@@ -176,16 +176,16 @@ rc.plot.grColLegend(x.cor, y.cor-bht, rev(colfuncBlue(nCol)), at=c(0,floor(nCol/
 #  heatmapData[heatmapData>maxLogPval]=maxLogPval
 #  #
 #  rc.plot.heatmap(heatmapData, track.num, color.gradient=colfuncHeat(nCol),
-#  		track.color=track.color, track.border=track.border)
+#  		track.color=track.color, track.border=track.border, polygon.border=NA)
 #  track.num=track.num+nrow(heatmapData)
 
 ## ----fig5, ref.label=c("ch1","ch2","chunk1","chunk2","chunk3","chunk4"), fig.cap = "Figure 5. Enrichment for gene signatures", echo=FALSE----
 rc.plot.area(size=0.9)
 chrom.alias=1:nrow(cyto)
 names(chrom.alias)=cyto$Chr
-rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 Rank=data.frame(cyto[,c("Chr","Start","End")], Score=Modules$Score, stringsAsFactors=FALSE)
-rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA)
+rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA, polygon.border=NA)
 eigenCorCols=colnames(Modules)[grep("Rho",colnames(Modules))] #select columns with pattern Rho
 maxCorr=1 #set maximum correlation coefficient
 track.border="#999999"
@@ -201,13 +201,13 @@ for(eigenCorCol in eigenCorCols){
 	HistData1=HistData[HistData$Data > 0,]
 	HistData1$col=colfuncBrown(nCol)[pmax(1,floor(HistData1[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData1, track.num, data.col, color.col=color.col,
-		fixed.height=TRUE, track.color=track.color, track.border=track.border)
+		fixed.height=TRUE, track.color=track.color, track.border=track.border, polygon.border=NA)
 	#plot negative correlation
 	HistData2=HistData[HistData$Data <= 0,]
 	HistData2$Data=abs(HistData2$Data)
 	HistData2$col=colfuncBlue(nCol)[pmax(1,floor(HistData2[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData2, track.num, data.col, color.col=color.col, fixed.height=TRUE,
-		track.border=track.border)
+		track.border=track.border, polygon.border=NA)
 }
 y.cor=rc.get.coordinates(1,1,1)$y[1]-1
 x.cor=params$radius*0.8
@@ -228,7 +228,7 @@ maxLogPval=25
 heatmapData[heatmapData>maxLogPval]=maxLogPval
 #
 rc.plot.heatmap(heatmapData, track.num, color.gradient=colfuncHeat(nCol),
-		track.color=track.color, track.border=track.border)
+		track.color=track.color, track.border=track.border, polygon.border=NA)
 track.num=track.num+nrow(heatmapData)
 
 ## ----chunk5, eval=FALSE--------------------------------------------------
@@ -240,9 +240,9 @@ track.num=track.num+nrow(heatmapData)
 rc.plot.area(size=0.9)
 chrom.alias=1:nrow(cyto)
 names(chrom.alias)=cyto$Chr
-rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 Rank=data.frame(cyto[,c("Chr","Start","End")], Score=Modules$Score, stringsAsFactors=FALSE)
-rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA)
+rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA, polygon.border=NA)
 eigenCorCols=colnames(Modules)[grep("Rho",colnames(Modules))] #select columns with pattern Rho
 maxCorr=1 #set maximum correlation coefficient
 track.border="#999999"
@@ -258,13 +258,13 @@ for(eigenCorCol in eigenCorCols){
 	HistData1=HistData[HistData$Data > 0,]
 	HistData1$col=colfuncBrown(nCol)[pmax(1,floor(HistData1[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData1, track.num, data.col, color.col=color.col,
-		fixed.height=TRUE, track.color=track.color, track.border=track.border)
+		fixed.height=TRUE, track.color=track.color, track.border=track.border, polygon.border=NA)
 	#plot negative correlation
 	HistData2=HistData[HistData$Data <= 0,]
 	HistData2$Data=abs(HistData2$Data)
 	HistData2$col=colfuncBlue(nCol)[pmax(1,floor(HistData2[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData2, track.num, data.col, color.col=color.col, fixed.height=TRUE,
-		track.border=track.border)
+		track.border=track.border, polygon.border=NA)
 }
 y.cor=rc.get.coordinates(1,1,1)$y[1]-1
 x.cor=params$radius*0.8
@@ -285,7 +285,7 @@ maxLogPval=25
 heatmapData[heatmapData>maxLogPval]=maxLogPval
 #
 rc.plot.heatmap(heatmapData, track.num, color.gradient=colfuncHeat(nCol),
-		track.color=track.color, track.border=track.border)
+		track.color=track.color, track.border=track.border, polygon.border=NA)
 track.num=track.num+nrow(heatmapData)
 rc.plot.grColLegend(x.cor+0.8, y.cor-bht, colfuncHeat(nCol), at=c(1,floor(nCol/2),nCol),
 	legend=signif(c(0,maxLogPval/2,maxLogPval),2), title=expression(paste(-log[10],"(P)")),
@@ -299,9 +299,9 @@ rc.plot.grColLegend(x.cor+0.8, y.cor-bht, colfuncHeat(nCol), at=c(1,floor(nCol/2
 rc.plot.area(size=0.9)
 chrom.alias=1:nrow(cyto)
 names(chrom.alias)=cyto$Chr
-rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA)
+rc.plot.ideogram(track.ids=1:2, plot.band=FALSE, plot.chromosome.id=TRUE, cex.text=1.0, chrom.alias=chrom.alias, track.border=NA, polygon.border=NA)
 Rank=data.frame(cyto[,c("Chr","Start","End")], Score=Modules$Score, stringsAsFactors=FALSE)
-rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA)
+rc.plot.histogram(Rank, track.id=4, data.col="Score", fixed.height=FALSE, custom.track.height=params$track.height*3, track.border=NA, polygon.border=NA)
 eigenCorCols=colnames(Modules)[grep("Rho",colnames(Modules))] #select columns with pattern Rho
 maxCorr=1 #set maximum correlation coefficient
 track.border="#999999"
@@ -317,13 +317,13 @@ for(eigenCorCol in eigenCorCols){
 	HistData1=HistData[HistData$Data > 0,]
 	HistData1$col=colfuncBrown(nCol)[pmax(1,floor(HistData1[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData1, track.num, data.col, color.col=color.col,
-		fixed.height=TRUE, track.color=track.color, track.border=track.border)
+		fixed.height=TRUE, track.color=track.color, track.border=track.border, polygon.border=NA)
 	#plot negative correlation
 	HistData2=HistData[HistData$Data <= 0,]
 	HistData2$Data=abs(HistData2$Data)
 	HistData2$col=colfuncBlue(nCol)[pmax(1,floor(HistData2[,data.col]*nCol/maxCorr))]
 	rc.plot.histogram(HistData2, track.num, data.col, color.col=color.col, fixed.height=TRUE,
-		track.border=track.border)
+		track.border=track.border, polygon.border=NA)
 }
 y.cor=rc.get.coordinates(1,1,1)$y[1]-1
 x.cor=params$radius*0.8
@@ -344,7 +344,7 @@ maxLogPval=25
 heatmapData[heatmapData>maxLogPval]=maxLogPval
 #
 rc.plot.heatmap(heatmapData, track.num, color.gradient=colfuncHeat(nCol),
-		track.color=track.color, track.border=track.border)
+		track.color=track.color, track.border=track.border, polygon.border=NA)
 track.num=track.num+nrow(heatmapData)
 rc.plot.grColLegend(x.cor+0.8, y.cor-bht, colfuncHeat(nCol), at=c(1,floor(nCol/2),nCol),
 	legend=signif(c(0,maxLogPval/2,maxLogPval),2), title=expression(paste(-log[10],"(P)")),

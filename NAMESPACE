@@ -9,6 +9,7 @@ export(
 	rc.plot.area,
 	rc.plot.histogram,
 	rc.plot.mHistogram,
+	rc.plot.barchart,
 	rc.plot.heatmap,
 	rc.plot.ideogram,
 	rc.plot.track,
@@ -16,11 +17,16 @@ export(
 	rc.plot.text,
 	rc.plot.line,
 	rc.plot.link,
+	rc.plot.point,
 	rc.plot.ribbon,
 	rc.plot.grColLegend,
 	rc.get.coordinates,
-	rc.get.ringCoordinates
+	rc.get.trackCoordinates,
+	ensemble_rank,
+	is.overlap,
+	getrankp
 )
-importFrom("grDevices", "colors")
+importFrom("utils", "tail")
+importFrom("grDevices", "colors", "gray.colors", "heat.colors")
 importFrom("graphics", "lines", "par", "plot.new", "plot.window",
-	"polygon", "text", "points")
+	"polygon", "text", "points","arrows","legend")
